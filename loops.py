@@ -1,10 +1,7 @@
 def index_of_by_index(word, list, index):
-    appearance = 0 
-    for i, item in enumerate(list):
-        if item == word:
-            appearance += 1
-            if appearance == index:
-                return i
+    for i in range(index, len(list)):
+        if list[i] == word:
+            return i
     return -1
 
 def index_of_empty(list):
@@ -36,6 +33,7 @@ def put(word, list):
     if "" in list:
         while index < len(list):
             if list[index] == "":
+                del list[index]
                 list.insert(index,word)
                 return(index)
             else:
@@ -50,8 +48,10 @@ def remove(word, list):
     if word in list:
         while index < len(list):
             if list[index] == word:
-                list.replace(word)
+                del list[index]
+                list.insert(index, "")
                 eliminations += 1
-        return eliminations
-    else:
-        return(0)
+                index += 1
+            else:
+                index += 1
+    return eliminations
