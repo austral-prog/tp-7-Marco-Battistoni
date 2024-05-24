@@ -1,14 +1,11 @@
 def index_of_by_index(word, list, index):
-    i = 0
-    if word in list:
-        while i < len(list):
-            if list[i] == word:
-                return False
-            else:
-                i += 1
-    else:
-        return(-1)
-
+    appearance = 0 
+    for i, item in enumerate(list):
+        if item == word:
+            appearance += 1
+            if appearance == index:
+                return i
+    return -1
 
 def index_of_empty(list):
     index = 0
